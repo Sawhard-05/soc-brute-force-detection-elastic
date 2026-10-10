@@ -1,0 +1,12 @@
+// Brute-Force Login Detection - Elastic SIEM (Kibana KQL)
+// Data view: winlogbeat-*
+
+// Baseline: successful logins (Event ID 4624)
+event.code:4624
+
+// Detection: failed logins (Event ID 4625)
+// Saved as "Failed Login Monitoring - Event ID 4625"
+event.code:4625
+
+// Failed logins as categorised by ECS
+event.category:"authentication" and event.action:"logon-failed"
